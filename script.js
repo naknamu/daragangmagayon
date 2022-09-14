@@ -1,4 +1,7 @@
 const content = document.querySelector('.content');
+const new_sort = document.querySelector('#new');
+const hot_sort = document.querySelector('#hot');
+const top_sort = document.querySelector('#top');
 
 //function to fetch data in url
 let fetchURL = (url) => {
@@ -21,9 +24,9 @@ let fetchURL = (url) => {
 }
 
 Promise.all([
-    fetchURL('https://www.reddit.com/r/IRLgirls/new.json?limit=100'),
-    fetchURL('https://www.reddit.com/r/PrettyGirls/new.json?limit=100'),
-    fetchURL('https://www.reddit.com/r/BeautifulFemales/new.json?limit=100')
+    fetchURL('https://www.reddit.com/r/IRLgirls/new.json'),
+    fetchURL('https://www.reddit.com/r/PrettyGirls/new.json'),
+    fetchURL('https://www.reddit.com/r/BeautifulFemales/new.json')
 ])
 
 //function to display GFYCAT url
@@ -56,3 +59,48 @@ let displayImage = (response, index) => {
     img.src = response.data.children[index].data.url;
     img.width = 400;
 }
+
+/*When bottom button group is clicked*/
+
+new_sort.addEventListener('click', () => {
+    //scroll the page to the top left
+    window.scrollTo(0, 0);
+    content.textContent = '';
+    //change color of new btn to something dark blue
+    new_sort.style.backgroundColor = 'rgb(26, 26, 125)';
+    //now the promise are called for new post
+    Promise.all([
+        fetchURL('https://www.reddit.com/r/IRLgirls/new.json'),
+        fetchURL('https://www.reddit.com/r/PrettyGirls/new.json'),
+        fetchURL('https://www.reddit.com/r/BeautifulFemales/new.json')
+    ])
+})
+
+hot_sort.addEventListener('click', () => {
+    //scroll the page to the top left
+    window.scrollTo(0, 0);
+    //removes all loaded data previously
+    content.textContent = '';
+    //change color of new btn to something light blue
+    new_sort.style.backgroundColor = '#3e4a8e';
+    //now the promise are called for hot post
+    Promise.all([
+        fetchURL('https://www.reddit.com/r/IRLgirls/hot.json'),
+        fetchURL('https://www.reddit.com/r/PrettyGirls/hot.json'),
+        fetchURL('https://www.reddit.com/r/BeautifulFemales/hot.json')
+    ])
+})
+
+top_sort.addEventListener('click', () => {
+    //scroll the page to the top left
+    window.scrollTo(0, 0);
+    //removes all loaded data previously
+    content.textContent = '';
+    new_sort.style.backgroundColor = '#3e4a8e';
+    //now the promise are called for top post
+    Promise.all([
+        fetchURL('https://www.reddit.com/r/IRLgirls/top.json?t=week'),
+        fetchURL('https://www.reddit.com/r/PrettyGirls/top.json?t=day'),
+        fetchURL('https://www.reddit.com/r/BeautifulFemales/top.json?t=month')
+    ])
+})
