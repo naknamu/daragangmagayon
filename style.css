@@ -42,7 +42,7 @@ header{
     cursor: pointer; /* Pointer/hand icon */
     float: left; /* Float the buttons side by side */
     font-family: cursive, 'Style Script';
-    font-size: 8px;
+    font-size: 12px;
   }
   
   /* Clear floats (clearfix hack) */
