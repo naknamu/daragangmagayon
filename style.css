@@ -4,6 +4,24 @@
     margin: 0;
 }
 
+header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgb(26, 26, 125);
+  font-family: cursive;
+  font-size: 12px;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+}
+
+.content{
+  background-color: #3e4a8e;
+}
+
 .btn-group{
     bottom: 0;
     position: fixed;
@@ -20,7 +38,7 @@
     background-color: #3e4a8e; /* Green background */
     border: 1px solid lightskyblue; /* Green border */
     color: white; /* White text */
-    padding: 10px 24px; /* Some padding */
+    padding: 7px 24px; /* Some padding */
     cursor: pointer; /* Pointer/hand icon */
     float: left; /* Float the buttons side by side */
   }
