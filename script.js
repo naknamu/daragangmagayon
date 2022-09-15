@@ -2,6 +2,7 @@ const content = document.querySelector('.content');
 const new_sort = document.querySelector('#new');
 const hot_sort = document.querySelector('#hot');
 const top_sort = document.querySelector('#top');
+const title = document.querySelector('#title');
 
 //function to fetch data in url
 let fetchURL = (url) => {
@@ -103,4 +104,11 @@ top_sort.addEventListener('click', () => {
         fetchURL('https://www.reddit.com/r/PrettyGirls/top.json?t=day'),
         fetchURL('https://www.reddit.com/r/BeautifulFemales/top.json?t=month')
     ])
+})
+
+//when title is clicked, do something!
+title.addEventListener('click', () => {
+    console.log('title is clicked!');
+    //refresh page
+    window.location.reload();
 })
