@@ -68,7 +68,9 @@ new_sort.addEventListener('click', () => {
     window.scrollTo(0, 0);
     content.textContent = '';
     //change color of new btn to something dark blue
-    new_sort.style.backgroundColor = 'rgb(26, 26, 125)';
+    new_sort.classList.replace('btn_inactive', 'btn_active');
+    hot_sort.classList.replace('btn_active', 'btn_inactive');
+    top_sort.classList.replace('btn_active', 'btn_inactive');
     //now the promise are called for new post
     Promise.all([
         fetchURL('https://www.reddit.com/r/IRLgirls/new.json'),
@@ -83,7 +85,9 @@ hot_sort.addEventListener('click', () => {
     //removes all loaded data previously
     content.textContent = '';
     //change color of new btn to something light blue
-    new_sort.style.backgroundColor = '#3e4a8e';
+    hot_sort.classList.replace('btn_inactive', 'btn_active');
+    new_sort.classList.replace('btn_active', 'btn_inactive');
+    top_sort.classList.replace('btn_active', 'btn_inactive');
     //now the promise are called for hot post
     Promise.all([
         fetchURL('https://www.reddit.com/r/IRLgirls/hot.json'),
@@ -97,7 +101,9 @@ top_sort.addEventListener('click', () => {
     window.scrollTo(0, 0);
     //removes all loaded data previously
     content.textContent = '';
-    new_sort.style.backgroundColor = '#3e4a8e';
+    top_sort.classList.replace('btn_inactive', 'btn_active');
+    new_sort.classList.replace('btn_active', 'btn_inactive');
+    hot_sort.classList.replace('btn_active', 'btn_inactive');
     //now the promise are called for top post
     Promise.all([
         fetchURL('https://www.reddit.com/r/IRLgirls/top.json?t=week'),
