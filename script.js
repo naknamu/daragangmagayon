@@ -45,7 +45,7 @@ let displayGfycatURL = (response, index) => {
             const video = document.createElement('video');
             content.appendChild(video);
             video.src = response.gfyItem.webmUrl;
-            video.width = 400;
+            video.setAttribute('width', '100%');
             video.setAttribute("controls","controls");
         })
         .catch(function (reject) {
@@ -58,7 +58,7 @@ let displayImage = (response, index) => {
     const img = document.createElement('img');
     content.appendChild(img);
     img.src = response.data.children[index].data.url;
-    img.width = 400;
+    img.setAttribute('width', '100%');
 }
 
 /*When bottom button group is clicked*/
