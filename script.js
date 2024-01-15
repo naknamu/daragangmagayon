@@ -4,6 +4,8 @@ const hot_sort = document.querySelector('#hot');
 const top_sort = document.querySelector('#top');
 const title = document.querySelector('#title');
 
+const LIMIT = `limit=${5}`;
+
 //function to fetch data in url
 let fetchURL = (url) => {
     fetch(url, {mode: 'cors'})
@@ -25,9 +27,9 @@ let fetchURL = (url) => {
 }
 
 Promise.all([
-    fetchURL('https://www.reddit.com/r/IRLgirls/new.json'),
-    fetchURL('https://www.reddit.com/r/PrettyGirls/new.json'),
-    fetchURL('https://www.reddit.com/r/BeautifulFemales/new.json')
+    fetchURL('https://www.reddit.com/r/IRLgirls/new.json?'+ LIMIT),
+    fetchURL('https://www.reddit.com/r/PrettyGirls/new.json?' + LIMIT),
+    fetchURL('https://www.reddit.com/r/BeautifulFemales/new.json?' + LIMIT)
 ])
 
 //function to display GFYCAT url
@@ -55,10 +57,17 @@ let displayGfycatURL = (response, index) => {
 
 //function to create and display image
 let displayImage = (response, index) => {
+
+    const container = document.createElement('figure');
+    content.appendChild(container);
+    container.classList.add("container");
+
     const img = document.createElement('img');
-    content.appendChild(img);
+    container.appendChild(img);
+    img.classList.add("gallery_item");
+
     img.src = response.data.children[index].data.url;
-    img.setAttribute('width', '100%');
+    //img.setAttribute('width', '100%');
 }
 
 /*When bottom button group is clicked*/
@@ -73,9 +82,9 @@ new_sort.addEventListener('click', () => {
     top_sort.classList.replace('btn_active', 'btn_inactive');
     //now the promise are called for new post
     Promise.all([
-        fetchURL('https://www.reddit.com/r/IRLgirls/new.json'),
-        fetchURL('https://www.reddit.com/r/PrettyGirls/new.json'),
-        fetchURL('https://www.reddit.com/r/BeautifulFemales/new.json')
+        fetchURL('https://www.reddit.com/r/IRLgirls/new.json?' + LIMIT),
+        fetchURL('https://www.reddit.com/r/PrettyGirls/new.json?' + LIMIT),
+        fetchURL('https://www.reddit.com/r/BeautifulFemales/new.json?' + LIMIT)
     ])
 })
 
@@ -90,9 +99,9 @@ hot_sort.addEventListener('click', () => {
     top_sort.classList.replace('btn_active', 'btn_inactive');
     //now the promise are called for hot post
     Promise.all([
-        fetchURL('https://www.reddit.com/r/IRLgirls/hot.json'),
-        fetchURL('https://www.reddit.com/r/PrettyGirls/hot.json'),
-        fetchURL('https://www.reddit.com/r/BeautifulFemales/hot.json')
+        fetchURL('https://www.reddit.com/r/IRLgirls/hot.json?' + LIMIT),
+        fetchURL('https://www.reddit.com/r/PrettyGirls/hot.json?' + LIMIT),
+        fetchURL('https://www.reddit.com/r/BeautifulFemales/hot.json?' + LIMIT)
     ])
 })
 
@@ -106,9 +115,9 @@ top_sort.addEventListener('click', () => {
     hot_sort.classList.replace('btn_active', 'btn_inactive');
     //now the promise are called for top post
     Promise.all([
-        fetchURL('https://www.reddit.com/r/IRLgirls/top.json?t=week'),
-        fetchURL('https://www.reddit.com/r/PrettyGirls/top.json?t=day'),
-        fetchURL('https://www.reddit.com/r/BeautifulFemales/top.json?t=month')
+        fetchURL('https://www.reddit.com/r/IRLgirls/top.json?t=week;' + LIMIT),
+        fetchURL('https://www.reddit.com/r/PrettyGirls/top.json?t=day;' + LIMIT),
+        fetchURL('https://www.reddit.com/r/BeautifulFemales/top.json?t=month;' + LIMIT)
     ])
 })
 

@@ -16,10 +16,16 @@ header{
   align-items: center;
   display: flex;
   padding: 10px;
+  z-index: 5;
 }
 
 .content{
   background-color: #3e4a8e;
+  margin-top: 55px;
+}
+
+.gallery_item{
+  width: 100%;
 }
 
 .btn-group{
@@ -61,4 +67,36 @@ header{
 /* Add a background color on hover */
 .btn-group button:hover {
   background-color: rgb(26, 26, 125);
+}
+
+
+@media (min-width: 600px) {
+  .content {
+    display: flex;
+    flex-flow: wrap;
+  }
+
+  .container{
+    flex-grow: 1;
+    min-width: 250px;
+    background: #3e4a8e;
+    border:1px solid #3e4a8e;
+    position: relative;
+  }
+
+  .container:before{
+    content:"";
+    display: block;
+    padding-top: 100%;
+  }
+
+  .gallery_item{
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 }
